@@ -13,26 +13,29 @@
 <style>
 /* ===== DESIGN TOKENS ===== */
 :root {
-  --ink:    #040C1E;
-  --ink2:   #081022;
-  --surface:#0D1A35;
-  --panel:  rgba(13,26,53,0.7);
-  --blue:   #2B7FFF;
-  --mint:   #00E5B0;
-  --fog:    #7A8EAE;
-  --paper:  #EDF1F8;
+  --ink:    #1A2E4A;
+  --ink2:   #1F3555;
+  --surface:#243D60;
+  --panel:  rgba(30,52,85,0.78);
+  --blue:   #4A9FFF;
+  --mint:   #00DBA8;
+  --fog:    #A8BEDC;
+  --paper:  #EEF4FF;
   --white:  #FFFFFF;
-  --border: rgba(43,127,255,0.18);
-  --glow:   rgba(43,127,255,0.35);
-  --red:    #FF4D4D;
+  --border: rgba(74,159,255,0.22);
+  --glow:   rgba(74,159,255,0.35);
   --gold:   #F5A623;
+  --gradient-1: linear-gradient(135deg, #4A9FFF 0%, #00DBA8 100%);
+  --gradient-hero: linear-gradient(160deg, #1A2E4A 0%, #1F3555 50%, #1C3560 100%);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.12), 0 1px 4px rgba(0,0,0,0.08);
+  --shadow-glow: 0 0 60px rgba(74,159,255,0.14);
 
   --serif:  'Cormorant Garamond', Georgia, serif;
   --sans:   'Jost', system-ui, sans-serif;
 
   --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
   --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 
@@ -40,7 +43,8 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
-  background: var(--ink);
+  background: linear-gradient(160deg, #1A2E4A 0%, #1F3555 50%, #1C3560 100%);
+  background-attachment: fixed;
   color: var(--paper);
   font-family: var(--sans);
   font-weight: 400;
@@ -264,14 +268,15 @@ section.active { display: block; }
 .hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 1260px;
+  max-width: 860px;
   margin: 0 auto;
   width: 100%;
   padding: 0 5%;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 60px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   min-height: 100vh;
   padding-top: 76px;
 }
@@ -402,7 +407,7 @@ section.active { display: block; }
   overflow: hidden;
   transition: transform var(--transition), border-color var(--transition);
 }
-.glass-card:hover { transform: translateY(-3px); border-color: rgba(43,127,255,0.4); }
+.glass-card:hover { transform: translateY(-4px); border-color: rgba(61,142,255,0.4); box-shadow: 0 8px 40px rgba(0,0,0,0.35), 0 0 0 1px rgba(61,142,255,0.15); }
 .glass-card::before {
   content: '';
   position: absolute;
@@ -648,7 +653,7 @@ section.active { display: block; }
   filter: grayscale(1);
   transition: color 0.3s, filter 0.3s;
 }
-.trust-logo:hover { color: var(--paper); filter: grayscale(0); }
+.trust-logo:hover { color: var(--paper); filter: grayscale(0) opacity(1); }
 .trust-logo .tl-icon { font-size: 1.3rem; }
 
 /* ===== HOME — WHAT WE DO ===== */
@@ -788,7 +793,7 @@ section.active { display: block; }
   background: rgba(13,26,53,0.4);
   transition: border-color var(--transition), transform var(--transition);
 }
-.why-item:hover { border-color: rgba(43,127,255,0.35); transform: translateX(4px); }
+.why-item:hover { border-color: rgba(61,142,255,0.4); transform: translateX(6px); box-shadow: 0 8px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(61,142,255,0.12); }
 .why-icon-wrap {
   width: 48px; height: 48px;
   background: rgba(43,127,255,0.12);
@@ -807,7 +812,7 @@ section.active { display: block; }
 .why-item p { font-size: 0.85rem; color: var(--fog); line-height: 1.7; margin: 0; }
 
 /* ===== HOME — PROCESS ===== */
-.process-band { background: var(--surface); padding: 80px 5%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.process-band { background: linear-gradient(135deg, #1E3454 0%, #243D60 100%); padding: 80px 5%; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .process-inner { max-width: 1260px; margin: 0 auto; }
 .process-steps {
   display: grid;
@@ -870,7 +875,7 @@ section.active { display: block; }
   position: relative;
   transition: transform var(--transition), border-color var(--transition);
 }
-.testi-card:hover { transform: translateY(-4px); border-color: rgba(43,127,255,0.35); }
+.testi-card:hover { transform: translateY(-6px); border-color: rgba(61,142,255,0.35); box-shadow: 0 16px 48px rgba(0,0,0,0.35), var(--shadow-glow); }
 .testi-quote {
   font-family: var(--serif);
   font-size: 2rem;
@@ -902,7 +907,7 @@ section.active { display: block; }
 .testi-stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 3px; }
 
 /* ===== HOME — INDUSTRIES ===== */
-.industries-band { background: var(--ink2); border-top: 1px solid var(--border); padding: 80px 5%; }
+.industries-band { background: linear-gradient(180deg, #1E3454 0%, #1A2E4A 100%); border-top: 1px solid var(--border); padding: 80px 5%; }
 .industries-inner { max-width: 1260px; margin: 0 auto; }
 .ind-grid {
   display: grid;
@@ -919,7 +924,7 @@ section.active { display: block; }
   cursor: default;
   transition: border-color var(--transition), transform var(--transition);
 }
-.ind-item:hover { border-color: rgba(0,229,176,0.35); transform: translateY(-3px); }
+.ind-item:hover { border-color: rgba(0,217,168,0.4); transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,217,168,0.1); }
 .ind-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
 .ind-name { font-size: 0.75rem; font-weight: 600; color: var(--fog); letter-spacing: 0.5px; text-transform: uppercase; }
 
@@ -1092,7 +1097,7 @@ section.active { display: block; }
   line-height: 1.4;
 }
 
-.values-section { background: var(--surface); border-top: 1px solid var(--border); padding: 80px 5%; }
+.values-section { background: linear-gradient(135deg, #1E3454 0%, #243D60 100%); border-top: 1px solid var(--border); padding: 80px 5%; }
 .values-grid {
   display: grid;
   grid-template-columns: repeat(4,1fr);
@@ -1106,7 +1111,7 @@ section.active { display: block; }
   padding: 36px 28px;
   transition: border-color var(--transition), transform var(--transition);
 }
-.val-card:hover { border-color: rgba(0,229,176,0.35); transform: translateY(-3px); }
+.val-card:hover { border-color: rgba(0,217,168,0.35); transform: translateY(-5px); box-shadow: 0 12px 36px rgba(0,0,0,0.35), var(--shadow-glow); }
 .val-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
 .val-card h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
 .val-card p { font-size: 0.83rem; color: var(--fog); line-height: 1.7; margin: 0; }
@@ -1337,7 +1342,7 @@ section.active { display: block; }
   padding: 40px 32px;
   transition: border-color var(--transition), transform var(--transition);
 }
-.career-card:hover { border-color: rgba(0,229,176,0.35); transform: translateY(-4px); }
+.career-card:hover { border-color: rgba(0,217,168,0.35); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.35), var(--shadow-glow); }
 .career-icon { font-size: 2rem; margin-bottom: 20px; display: block; }
 .career-card h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 14px; }
 .career-card p { font-size: 0.87rem; color: var(--fog); line-height: 1.8; }
@@ -1557,6 +1562,271 @@ footer {
 .mlang-btn{font-family:var(--sans);font-size:0.9rem;font-weight:700;letter-spacing:2px;color:var(--fog);background:none;border:1px solid var(--border);padding:8px 28px;border-radius:100px;cursor:pointer;transition:color 0.2s,border-color 0.2s;}
 .mlang-btn.active{color:var(--mint);border-color:rgba(0,229,176,0.4);}
 
+
+/* ── PROFESSIONAL UPGRADE EXTRAS ── */
+
+/* Gradient hero headline em */
+.hero-headline em {
+  font-style: italic;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient stat values */
+.stat-big {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Better border on what-grid */
+.what-grid {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Section number in svc cards */
+.svc-num {
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+}
+
+/* Better hero sub text */
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(140,158,195,0.95);
+  font-weight: 300;
+  max-width: 620px;
+  line-height: 1.9;
+  margin-bottom: 48px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Improved nav wordmark */
+.nav-wordmark {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(200,220,255,0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+.nav-wordmark span {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--fog);
+  margin-top: 2px;
+  -webkit-text-fill-color: var(--fog);
+}
+
+/* Better what-item h3 */
+.what-item h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+/* Refined ticker dot */
+.ticker-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gradient-1);
+  background: var(--mint);
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Better blog overlay */
+.blog-overlay-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 100px 40px 80px;
+}
+
+/* Page banner h1 refinement */
+.page-banner h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem,4vw,3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  margin-bottom: 18px;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+/* Better svc-tag */
+.svc-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid rgba(61,142,255,0.2);
+  color: rgba(128,144,174,0.9);
+  background: rgba(61,142,255,0.05);
+  transition: border-color 0.2s, color 0.2s;
+}
+.svc-card:hover .svc-tag {
+  border-color: rgba(61,142,255,0.3);
+  color: rgba(160,185,220,1);
+}
+
+/* Better footer col links */
+.footer-col a {
+  font-size: 0.85rem;
+  color: rgba(128,144,174,0.8);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s, padding-left 0.2s;
+  display: inline-block;
+}
+.footer-col a:hover {
+  color: var(--paper);
+  padding-left: 4px;
+}
+
+/* Testimonial quote mark */
+.testi-quote {
+  font-family: var(--serif);
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.5;
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Better lang toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(61,142,255,0.2);
+  border-radius: 100px;
+  overflow: hidden;
+  background: rgba(61,142,255,0.05);
+}
+
+/* Founder initials gradient */
+.founder-initials {
+  width: 84px;
+  height: 84px;
+  background: var(--gradient-1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(61,142,255,0.3);
+}
+
+/* Improved contact detail icon */
+.cd-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(61,142,255,0.12), rgba(0,217,168,0.08));
+  border: 1px solid rgba(61,142,255,0.2);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(61,142,255,0.1);
+}
+
+/* Cert line improvements */
+.cert-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 12px;
+  border: 1px solid rgba(74,159,255,0.18);
+  transition: border-color 0.2s, background 0.2s;
+}
+.cert-line:hover {
+  border-color: rgba(61,142,255,0.25);
+  background: rgba(61,142,255,0.05);
+}
+
+/* Better book features */
+.bf-check {
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, rgba(61,142,255,0.15), rgba(0,217,168,0.1));
+  border: 1px solid rgba(0,217,168,0.35);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  color: var(--mint);
+  flex-shrink: 0;
+}
+
+/* Better no-open box */
+.no-open {
+  background: rgba(184,114,10,0.05);
+  border: 1px solid rgba(245,166,35,0.2);
+  border-radius: 18px;
+  padding: 28px 36px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 40px 0;
+  backdrop-filter: blur(8px);
+}
+
+/* Hero actions button spacing */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Mobile bottom nav icons */
+#bottom-nav button:hover {
+  color: var(--mint) !important;
+}
+
+/* Improved scroll bar */
+::-webkit-scrollbar-thumb {
+  background: rgba(61,142,255,0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(61,142,255,0.6);
+}
+
 </style>
 </head>
 <body>
@@ -1624,7 +1894,7 @@ footer {
 
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-eyebrow">
+        <div class="hero-eyebrow" style="margin-left:auto;margin-right:auto;">
           <span class="pulse-dot"></span>
           Houston, Texas · Microsoft Azure Partner
         </div>
@@ -1636,7 +1906,7 @@ footer {
         <p class="hero-sub">
           TTS Tech Consulting helps CIOs, CTOs and IT leaders capture real business value through secured, cost-effective Azure cloud solutions — from architecture to managed support.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions" style="justify-content:center;">
           <button class="btn-primary" onclick="go('book')">
             Schedule a Consultation <span class="arrow">→</span>
           </button>
@@ -1646,52 +1916,6 @@ footer {
         </div>
       </div>
 
-      <div class="hero-cards">
-        <div class="glass-card">
-          <div class="card-header">
-            <div class="card-label">Practice Overview</div>
-            <div class="card-badge">● Active</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-item">
-              <span class="stat-val" data-target="12">0</span><span style="color:var(--mint);font-family:var(--serif);font-size:1.5rem">+</span>
-              <span class="stat-lbl">Yrs Expertise</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val" data-target="9">0</span>
-              <span class="stat-lbl">Service Lines</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-val">100<span style="color:var(--mint);font-size:1.2rem">%</span></span>
-              <span class="stat-lbl">Client Focus</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass-card">
-          <div class="card-header">
-            <div class="card-label">Microsoft Certifications</div>
-            <div class="card-badge">Verified</div>
-          </div>
-          <div class="cert-row">
-            <div class="cert-line">
-              <div class="cert-badge-icon">☁</div>
-              <div class="cert-name">Azure Administrator Associate</div>
-              <div class="cert-check">✓</div>
-            </div>
-            <div class="cert-line">
-              <div class="cert-badge-icon">🏗</div>
-              <div class="cert-name">Azure Solutions Architect Expert</div>
-              <div class="cert-check">✓</div>
-            </div>
-            <div class="cert-line">
-              <div class="cert-badge-icon">🔒</div>
-              <div class="cert-name">Azure Security Engineer Associate</div>
-              <div class="cert-check">✓</div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Ticker -->
@@ -1975,7 +2199,9 @@ footer {
       </ul></div>
       <div class="footer-col"><h4>Get In Touch</h4><ul>
         <li><a>Houston, Texas</a></li>
-        <li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li>
+        <li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li>
+        <li><a href="tel:+13466669746" style="display:inline-flex;align-items:center;gap:6px">📞 346-666-9746</a></li>
+        <li><a href="https://wa.me/+13466669746" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#25D366">💬 WhatsApp</a></li>
         <li><a onclick="go('book')">Book Appointment →</a></li>
       </ul></div>
     </div>
@@ -2000,6 +2226,16 @@ footer {
       <h1>Comprehensive Cloud & Security Services</h1>
       <p>Nine specialized service lines designed to take you from cloud strategy to production — and keep you there securely.</p>
     </div>
+  </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
   </div>
 
   <div class="section-wrap">
@@ -2087,7 +2323,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li><li><a onclick="go('services')">Azure Architecture</a></li><li><a onclick="go('services')">Security</a></li><li><a onclick="go('services')">Database Admin</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('blog')">Insights</a></li><li><a onclick="go('careers')">Careers</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a>Houston, Texas</a></li><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li><li><a onclick="go('book')">Book Appointment</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a>Houston, Texas</a></li><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li><li><a onclick="go('book')">Book Appointment</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span><div class="footer-legal"><a>Privacy Policy</a><a>Terms of Use</a></div></div>
   </footer>
@@ -2103,6 +2339,16 @@ footer {
       <h1>A Trusted Partner for<br>Enterprise Cloud Success</h1>
       <p>TTS Tech Consulting is a global IT consulting services provider based in Houston, Texas — delivering high-value cloud and security solutions for over a decade.</p>
     </div>
+  </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
   </div>
 
   <div class="section-wrap">
@@ -2173,7 +2419,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('blog')">Insights</a></li><li><a onclick="go('careers')">Careers</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a>Houston, Texas</a></li><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a>Houston, Texas</a></li><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span><div class="footer-legal"><a>Privacy Policy</a><a>Terms of Use</a></div></div>
   </footer>
@@ -2189,6 +2435,16 @@ footer {
       <h1>Cloud & Security Intelligence</h1>
       <p>Expert perspectives from the TTS Tech team on cloud computing, cybersecurity, and enterprise technology strategy.</p>
     </div>
+  </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
   </div>
 
   <div class="section-wrap">
@@ -2250,7 +2506,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span></div>
   </footer>
@@ -2267,6 +2523,16 @@ footer {
       <p>Our cloud architects and consultants are ready to help tailor the right cloud solution for your organization.</p>
     </div>
   </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
+  </div>
 
   <div class="section-wrap">
     <div class="contact-wrap">
@@ -2280,7 +2546,20 @@ footer {
           </div>
           <div class="contact-detail">
             <div class="cd-icon">✉️</div>
-            <div><div class="cd-label">Email</div><div class="cd-value">info@ttstechconsultingllc.com</div></div>
+            <div><div class="cd-label">Email</div><div class="cd-value"><a href="mailto:info@ttstechconsulting.com" style="color:inherit;text-decoration:none">info@ttstechconsulting.com</a></div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="cd-icon">📞</div>
+            <div>
+              <div class="cd-label">Phone / WhatsApp</div>
+              <div class="cd-value" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+                <a href="tel:+13466669746" style="color:var(--paper);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-weight:500">📞 346-666-9746</a>
+                <a href="https://wa.me/+13466669746" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#25D366;padding:4px 14px;border-radius:100px;font-size:0.82rem;font-weight:600;text-decoration:none">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
           <div class="contact-detail">
             <div class="cd-icon">🌐</div>
@@ -2329,7 +2608,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('blog')">Insights</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span></div>
   </footer>
@@ -2345,6 +2624,16 @@ footer {
       <h1>Build Your Cloud Career With TTS</h1>
       <p>Explore opportunities for every stage of your cloud and IT career at a fast-growing Texas consulting firm.</p>
     </div>
+  </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
   </div>
 
   <div class="section-wrap">
@@ -2387,7 +2676,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span></div>
   </footer>
@@ -2403,6 +2692,16 @@ footer {
       <h1>Book a Consultation</h1>
       <p>Select a service and preferred time. Our team will confirm your appointment within one business day.</p>
     </div>
+  </div>
+  <div style="background:rgba(43,127,255,0.06);border-bottom:1px solid var(--border);padding:12px 5%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;overflow-x:auto;">
+    <span style="font-size:0.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--fog);margin-right:8px;white-space:nowrap;">Navigate →</span>
+    <button onclick="go('home')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.home">Home</button>
+    <button onclick="go('services')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.services">Services</button>
+    <button onclick="go('about')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.about">About</button>
+    <button onclick="go('blog')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.insights">Insights</button>
+    <button onclick="go('careers')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.careers">Careers</button>
+    <button onclick="go('contact')" style="font-family:var(--sans);font-size:0.78rem;font-weight:500;color:var(--fog);background:none;border:1px solid var(--border);padding:5px 14px;border-radius:100px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--paper)';this.style.borderColor='rgba(255,255,255,0.3)'" onmouseout="this.style.color='var(--fog)';this.style.borderColor='var(--border)'" data-i="nav.contact">Contact</button>
+    <button onclick="go('book')" style="font-family:var(--sans);font-size:0.78rem;font-weight:600;color:var(--mint);background:rgba(0,229,176,0.08);border:1px solid rgba(0,229,176,0.3);padding:5px 16px;border-radius:100px;cursor:pointer;white-space:nowrap;margin-left:auto;" data-i="nav.cta">Book Consultation</button>
   </div>
 
   <div class="section-wrap">
@@ -2436,7 +2735,7 @@ footer {
           <div class="fld"><label>Last Name</label><input type="text" placeholder="Smith"></div>
         </div>
         <div class="fld"><label>Business Email</label><input type="email" placeholder="john@company.com"></div>
-        <div class="fld"><label>Phone Number</label><input type="tel" placeholder="+1 (713) 555-0000"></div>
+        <div class="fld"><label>Phone Number</label><input type="tel" placeholder="+1 (346) 666-9746"></div>
         <div class="form-row">
           <div class="fld"><label>Preferred Date</label><input type="date"></div>
           <div class="fld"><label>Preferred Time (CT)</label>
@@ -2460,7 +2759,7 @@ footer {
       <div class="footer-brand"><img src="data:image/png;base64,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" alt="TTS Tech Consulting" style="width:64px;height:64px;object-fit:contain;margin-bottom:12px;display:block;"><h3 style="margin-top:0">TTS Tech Consulting</h3><p>Azure cloud and security consulting based in Houston, Texas.</p><div class="social-row"><div class="soc-btn">in</div><div class="soc-btn">f</div><div class="soc-btn">𝕏</div></div></div>
       <div class="footer-col"><h4>Services</h4><ul><li><a onclick="go('services')">All Services</a></li></ul></div>
       <div class="footer-col"><h4>Company</h4><ul><li><a onclick="go('about')">About Us</a></li><li><a onclick="go('contact')">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsultingllc.com">info@ttstechconsultingllc.com</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:info@ttstechconsulting.com">info@ttstechconsulting.com</a></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© 2025 TTS Tech Consulting LLC.</span></div>
   </footer>
@@ -2853,7 +3152,7 @@ fr:{
   "b3tag":"Stratégie Cloud","b3t":"AWS vs Azure vs GCP : Comparaison des Coûts Cloud","b3d":"Quel hyperscaler correspond à vos charges de travail et à votre budget ? Nous examinons les modèles de tarification des trois grands fournisseurs cloud.",
   "blog.back":"← Retour aux Insights",
   "co.t":"Commençons une Conversation","co.s":"Nos architectes cloud et consultants sont prêts à vous aider à concevoir la solution cloud adaptée à votre organisation.",
-  "co.h2":"Démarrer est Simple","co.p":"N'hésitez pas à nous contacter pour en savoir plus sur la manière dont nos services cloud d'entreprise peuvent bénéficier à votre organisation.",
+  "co.h2":"Démarrer est Simple","co.p":"Contactez-nous par e-mail ou WhatsApp pour en savoir plus sur la façon dont nos services cloud peuvent bénéficier à votre organisation.",
   "co.loc":"Localisation","co.locv":"Houston, Texas — Sur Rendez-vous Uniquement","co.web":"Site Web","co.appt":"Rendez-vous","co.al":"Planifier en ligne →",
   "co.ft":"Envoyez-nous un Message",
   "fl.fn":"Prénom","fl.ln":"Nom","fl.em":"Adresse E-mail","fl.co":"Entreprise","fl.sv":"Service Souhaité","fl.mg":"Message","fl.ph":"Téléphone","fl.dt":"Date Souhaitée","fl.tm":"Heure Souhaitée (CT)","fl.nt":"Notes (Facultatif)","fl.sd":"Envoyer le Message →","fl.def":"Sélectionnez un service...",
@@ -2960,6 +3259,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => globalObs.observe(el));
 });
+</script>
+
+<div id="bottom-nav" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:rgba(8,16,34,0.97);backdrop-filter:blur(16px);border-top:1px solid var(--border);padding:8px 4% 10px;overflow-x:auto;">
+  <div style="display:flex;align-items:center;justify-content:space-around;gap:4px;min-width:360px;">
+    <button onclick="go('home')" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--sans);font-size:0.6rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--fog);background:none;border:none;cursor:pointer;padding:4px 8px;" data-bn="home"><span style="font-size:1.1rem">🏠</span><span data-i="nav.home">Home</span></button>
+    <button onclick="go('services')" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--sans);font-size:0.6rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--fog);background:none;border:none;cursor:pointer;padding:4px 8px;" data-bn="services"><span style="font-size:1.1rem">☁️</span><span data-i="nav.services">Services</span></button>
+    <button onclick="go('about')" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--sans);font-size:0.6rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--fog);background:none;border:none;cursor:pointer;padding:4px 8px;" data-bn="about"><span style="font-size:1.1rem">👤</span><span data-i="nav.about">About</span></button>
+    <button onclick="go('contact')" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--sans);font-size:0.6rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--fog);background:none;border:none;cursor:pointer;padding:4px 8px;" data-bn="contact"><span style="font-size:1.1rem">✉️</span><span data-i="nav.contact">Contact</span></button>
+    <button onclick="go('book')" style="display:flex;flex-direction:column;align-items:center;gap:2px;font-family:var(--sans);font-size:0.6rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--mint);background:none;border:none;cursor:pointer;padding:4px 8px;" data-bn="book"><span style="font-size:1.1rem">📅</span><span data-i="nav.cta">Book</span></button>
+  </div>
+</div>
+<script>// Show bottom nav on mobile
+if(window.innerWidth<=1024){document.getElementById("bottom-nav").style.display="block";document.body.style.paddingBottom="64px";}
+window.addEventListener("resize",function(){if(window.innerWidth<=1024){document.getElementById("bottom-nav").style.display="block";document.body.style.paddingBottom="64px";}else{document.getElementById("bottom-nav").style.display="none";document.body.style.paddingBottom="0";}});
 </script>
 </body>
 </html>
